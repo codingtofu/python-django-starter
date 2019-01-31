@@ -1,0 +1,13 @@
+{% extends 'third/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <form action="{% url 'review-create' restaurant_id=item.id %}" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">등록</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'first/base.html' %}
+{% block content %}
+<p>수를 하나 입력해주세요.</p>
+
+<form action="{% url 'result' %}" method="get">
+    <input type="number" name="number"/>
+    <button type="submit">결과보기</button>
+</form>
+{% endblock %}

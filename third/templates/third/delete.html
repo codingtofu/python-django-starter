@@ -1,0 +1,14 @@
+{% extends 'third/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <form action="{% url 'restaurant-delete' id=item.id %}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="password">비밀번호</label>
+            <input name="password" type="password"/>
+        </p>
+        <button type="submit">삭제</button>
+    </form>
+</div>
+{% endblock %}

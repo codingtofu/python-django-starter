@@ -1,0 +1,40 @@
+{% extends 'third/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" style="margin-top:20px">
+            <h3>{{ item.name }}</h3>
+            <p>
+                {{ item.address }}
+            </p>
+            <p>
+                <a href="{% url 'restaurant-delete' id=item.id %}">
+                    <button class="btn btn-danger">삭제하기</button>
+                </a>
+            </p>
+            <hr/>
+            <p>
+                <a href="{% url 'review-create' restaurant_id=item.id %}">
+                    <button class="btn btn-info">리뷰쓰기</button>
+                </a>
+            </p>
+            {% for review in reviews %}
+                <div class="card bg-light mb-3">
+                    <div class="card-header">
+                        <b>{{ review.point }}</b>점
+                        <a href="{% url 'review-delete' restaurant_id=item.id review_id=review.id %}">
+                            <button type="button" class="close" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ review.comment }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
